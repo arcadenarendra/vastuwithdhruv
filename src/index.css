@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400;700&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-navy: #0F172A;
+  --color-navy-soft: #1B2537;
+  --color-gold: #D4AF37;
+  --color-gold-light: #E8CC6A;
+  --color-ivory: #FDFBF7;
+  --color-stone: #F5F0E8;
+  --color-stone-dark: #E8E0D0;
+  --color-muted: #8B7D6B;
+  --color-muted-dark: #5C5248;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Lato', system-ui, sans-serif;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Sticky header is ~112px tall on desktop; keep anchored headings clear of it. */
+  scroll-padding-top: 7rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FDFBF7;
+  color: #0F172A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FDFBF7;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8962E;
+}
+
+::selection {
+  background: #D4AF37;
+  color: #0F172A;
+}
+
+/* Gold divider */
+.gold-divider {
+  width: 60px;
+  height: 1px;
+  background: #D4AF37;
+  display: block;
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #D4AF37;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/*
+ * Hairline grid used behind dark sections. Rendered as a background image
+ * rather than an inline <svg><pattern> per page — one definition, and it
+ * tiles for free at any viewport size.
+ */
+.grid-texture {
+  background-image:
+    linear-gradient(to right, rgba(212, 175, 55, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 175, 55, 0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s var(--ease-out-quint);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/*
+ * Shimmer sweep for the testimonial placeholders. Also used by the hero's
+ * dashed compass ring via an inline `animate-[spin_…]` utility.
+ */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
