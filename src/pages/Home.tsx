@@ -296,7 +296,7 @@ export default function Home() {
               <ScrollReveal direction="right">
                 <figure className="group relative aspect-3/4 overflow-hidden bg-navy-soft">
                   <img
-                    src="../public/profile.jpeg"
+                    src={`${import.meta.env.BASE_URL}profile.jpeg`}
                     alt="Dhruv Dave, Vastu consultant"
                     className="h-full w-full object-cover opacity-85 transition-all duration-700 group-hover:scale-[1.03] group-hover:opacity-95"
                     loading="lazy"

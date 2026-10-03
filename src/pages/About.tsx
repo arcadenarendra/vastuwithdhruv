@@ -36,7 +36,7 @@ export default function About() {
                 <figure className="group relative">
                   <div className="aspect-3/4 overflow-hidden bg-stone-100">
                     <img
-                      src="../public/profile.jpeg"
+                      src={`${import.meta.env.BASE_URL}profile.jpeg`}
                       alt="Dhruv Dave, Vastu Consultant, Ahmedabad"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                       loading="lazy"
